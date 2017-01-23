@@ -54,20 +54,20 @@ describe("Account", function() {
 
       it("should add a deposit to transactionHistory", function() {
         expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
-                                                       credit: 100.00,
-                                                       debit: 0.00,
-                                                       balance: 100.00    }]);
+                                                       credit: '100.00',
+                                                       debit: '0.00',
+                                                       balance: '100.00'    }]);
       });
       it("should add a withdrawal to transactionHistory", function() {
         account.withdraw(80);
         expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
-                                                       credit: 100.00,
-                                                       debit: 0.00,
-                                                       balance: 100.00    },
+                                                       credit: '100.00',
+                                                       debit: '0.00',
+                                                       balance: '100.00'    },
                                                      { date: '23/01/2017',
-                                                       credit: 0.00,
-                                                       debit: 80.00,
-                                                       balance: 20.00    }
+                                                       credit: '0.00',
+                                                       debit: '80.00',
+                                                       balance: '20.00'    }
 
                                                      ])
 

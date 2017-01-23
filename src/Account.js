@@ -35,15 +35,15 @@ Account.prototype.formatDate = function() {
 Account.prototype.addTransaction = function(credit, debit) {
   this.currentTransaction = {
     date: this.formatDate(),
-    credit: credit,
-    debit: debit,
-    balance: this.balance,
+    credit: this.formatMoney(credit),
+    debit: this.formatMoney(debit),
+    balance: this.formatMoney(this.balance)
   }
   this.transactionHistory.push(this.currentTransaction);
 };
 
 Account.prototype.formatMoney = function(amount) {
-  return amount.toFixed(2)
+  return amount.toFixed(2);
 };
 
 // Account.prototype.processAccountStatement = function() {
