@@ -13,5 +13,4 @@ I can withdraw from my account.
 As a client,
 So I can keep track of my spending,
 I can see an account statement with the date, amount and balance of each transaction.
-
 ```

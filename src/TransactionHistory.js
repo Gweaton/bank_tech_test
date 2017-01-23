@@ -7,21 +7,14 @@ TransactionHistory.prototype.showHistory = function() {
 };
 
 TransactionHistory.prototype.addTransaction = function(type, amount, balance) {
-  if (type === "deposit") {
     this.currentTransaction = {
       date: this.formatDate(),
-      credit: this.formatMoney(amount),
-      debit: '    ',
+      credit: null,
+      debit: null,
       balance: this.formatMoney(balance)
     }
-  } else if (type === "withdrawal") {
-    this.currentTransaction = {
-      date: this.formatDate(),
-      credit: '    ',
-      debit: this.formatMoney(amount),
-      balance: this.formatMoney(balance)
-    }
-  }
+  this.currentTransaction.credit = type === "deposit" ? this.formatMoney(amount) : '    '
+  this.currentTransaction.debit = type === "withdrawal" ? this.formatMoney(amount) : '    '
   this.history.push(this.currentTransaction);
 }
 
@@ -43,15 +36,4 @@ TransactionHistory.prototype.formatMoney = function(amount) {
 
 TransactionHistory.prototype.formatTransaction = function(transaction) {
   return `${transaction.date} || ${transaction.credit} || ${transaction.debit} || ${transaction.balance}\n`
-};
-
-
-TransactionHistory.prototype.processAccountStatement = function() {
-  var statement = ""
-  statement += "date       || credit || debit || balance\n"
-  for (var i = this.history.length -1 ; i >= 0; i-- ) {
-    statement += this.formatTransaction(this.history[i])
-    }
-    console.log(statement);
-    return(statement);
 };

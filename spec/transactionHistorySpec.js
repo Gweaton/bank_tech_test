@@ -50,16 +50,3 @@ describe("TransactionHistory", function() {
         expect(transactionHistory.formatTransaction(transactionHistory.history[0])).toEqual("23/01/2017 || 100.00 ||      || 100.00\n")
       });
     });
-
-
-    describe("processAccountStatement", function() {
-      xit("should print out a nearly formatted transactionHistory", function() {
-        transactionHistory.addTransaction("deposit", 1000, 1000);
-        transactionHistory.addTransaction("deposit", 2000, 3000);
-        transactionHistory.addTransaction("withdrawal", 500, 2500);
-
-        expect(transactionHistory.processAccountStatement()).toEqual(
-          `date       || credit || debit || balance\n23/01/2017 ||       || 500.00 || 2500.00  \n23/01/2017 || 2000.00 ||       || 3000.00 \n23/01/2017 || 1000.00 ||       || 1000.00 \n`
-        );
-      });
-    });
