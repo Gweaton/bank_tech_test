@@ -9,6 +9,7 @@ Account.prototype.showBalance = function() {
 
 Account.prototype.deposit = function(amount) {
   this.balance += amount;
+  this.addTransaction(amount, 0);
 };
 
 Account.prototype.withdraw = function(amount) {
@@ -27,6 +28,15 @@ Account.prototype.formatDate = function() {
   function format(date) {
     return (date < 10) ? ("0" + date) : date
   };
-
   return `${format(day)}/${format(month)}/${year}`;
+};
+
+Account.prototype.addTransaction = function(credit, debit) {
+  this.currentTransaction = {
+    date: this.formatDate(),
+    credit: credit,
+    debit: debit,
+    balance: this.balance,
+  }
+  this.transactionHistory.push(this.currentTransaction);
 };

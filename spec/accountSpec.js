@@ -46,3 +46,13 @@ describe("Account", function() {
       expect(account.formatDate()).toEqual("23/01/2017")
     });
   });
+
+  describe("addTransaction", function() {
+    it("should add the current transaction to transactionHistory", function() {
+      account.deposit(100);
+      expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
+                                                     credit: 100,
+                                                     debit: 0,
+                                                     balance: 100    }]);
+    });
+  });
