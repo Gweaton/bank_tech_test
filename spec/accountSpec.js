@@ -81,6 +81,14 @@ describe("Account", function() {
     });
   });
 
+  describe("formatTransaction", function() {
+    it("should print out a formatted line from transactionHistory", function() {
+      account.deposit(100);
+      expect(account.formatTransaction(account.transactionHistory[0])).toEqual("23/01/2017 || 100.00 || 0.00 || 100.00\n")
+    });
+  });
+
+
   describe("processAccountStatement", function() {
     xit("should print out a nearly formatted transactionHistory", function() {
       account.deposit(100);

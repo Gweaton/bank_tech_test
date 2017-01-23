@@ -46,6 +46,10 @@ Account.prototype.formatMoney = function(amount) {
   return amount.toFixed(2);
 };
 
+Account.prototype.formatTransaction = function(transaction) {
+  return `${transaction.date} || ${transaction.credit} || ${transaction.debit} || ${transaction.balance}\n`
+};
+
 Account.prototype.processAccountStatement = function() {
   var statement = ""
   statement += "date       || credit || debit || balance\n "
