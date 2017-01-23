@@ -55,17 +55,17 @@ describe("Account", function() {
       it("should add a deposit to transactionHistory", function() {
         expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
                                                        credit: '100.00',
-                                                       debit: '0.00',
+                                                       debit: '    ',
                                                        balance: '100.00'    }]);
       });
       it("should add a withdrawal to transactionHistory", function() {
         account.withdraw(80);
         expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
                                                        credit: '100.00',
-                                                       debit: '0.00',
+                                                       debit: '    ',
                                                        balance: '100.00'    },
                                                      { date: '23/01/2017',
-                                                       credit: '0.00',
+                                                       credit: '    ',
                                                        debit: '80.00',
                                                        balance: '20.00'    }
 
@@ -84,17 +84,18 @@ describe("Account", function() {
   describe("formatTransaction", function() {
     it("should print out a formatted line from transactionHistory", function() {
       account.deposit(100);
-      expect(account.formatTransaction(account.transactionHistory[0])).toEqual("23/01/2017 || 100.00 || 0.00 || 100.00\n")
+      expect(account.formatTransaction(account.transactionHistory[0])).toEqual("23/01/2017 || 100.00 ||      || 100.00\n")
     });
   });
 
 
   describe("processAccountStatement", function() {
     xit("should print out a nearly formatted transactionHistory", function() {
-      account.deposit(100);
-      account.withdraw(80);
+      account.deposit(1000);
+      account.deposit(2000)
+      account.withdraw(500);
       expect(account.processAccountStatement()).toEqual(
-        `date       || credit || debit || balance\n23/01/2017 || 100.00 || 0.00  || 100.00 \n23/01/2017 || 0.00   || 80.00 || 20.00  \n`
+        `date       || credit || debit || balance\n23/01/2017 ||       || 500.00 || 2500.00  \n23/01/2017 || 2000.00 ||       || 3000.00 \n23/01/2017 || 1000.00 ||       || 1000.00 \n`
       );
     });
   });

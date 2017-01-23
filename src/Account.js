@@ -9,7 +9,7 @@ Account.prototype.showBalance = function() {
 
 Account.prototype.deposit = function(amount) {
   this.balance += amount;
-  this.addTransaction(amount, 0);
+  this.addTransaction(this.formatMoney(amount), "    ");
 };
 
 Account.prototype.withdraw = function(amount) {
@@ -17,7 +17,7 @@ Account.prototype.withdraw = function(amount) {
     throw "Sorry, your account has insufficient funds for this transaction.";
   }
   this.balance -= amount;
-  this.addTransaction(0, amount);
+  this.addTransaction("    ", this.formatMoney(amount));
 };
 
 Account.prototype.formatDate = function() {
@@ -35,8 +35,8 @@ Account.prototype.formatDate = function() {
 Account.prototype.addTransaction = function(credit, debit) {
   this.currentTransaction = {
     date: this.formatDate(),
-    credit: this.formatMoney(credit),
-    debit: this.formatMoney(debit),
+    credit: credit,
+    debit: debit,
     balance: this.showBalance()
   }
   this.transactionHistory.push(this.currentTransaction);
@@ -52,10 +52,10 @@ Account.prototype.formatTransaction = function(transaction) {
 
 Account.prototype.processAccountStatement = function() {
   var statement = ""
-  statement += "date       || credit || debit || balance\n "
-  for (var i = 0; i < this.transactionHistory.length; i++ ) {
-      statement += `${this.transactionHistory[i].date} || ${this.transactionHistory[i].credit}  || ${this.transactionHistory[i].debit}  || ${this.transactionHistory[i].balance} \n`
+  statement += "date       || credit || debit || balance\n"
+  for (var i = this.transactionHistory.length -1 ; i >= 0; i-- ) {
+    statement += this.formatTransaction(this.transactionHistory[i])
     }
-    return(statement);
     console.log(statement);
+    return(statement);
 };
