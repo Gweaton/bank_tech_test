@@ -24,9 +24,15 @@ describe("Account", function() {
   });
 
   describe("withdraw", function() {
-    it("should remove money from the account's balance", function() {
+    beforeEach(function() {
       account.deposit(100);
+    })
+    it("should remove money from the account's balance", function() {
       account.withdraw(10);
       expect(account.showBalance()).toEqual(90);
+    });
+
+    it("should not let you overdraw", function() {
+      expect(function() {account.withdraw(110)}).toThrow("Sorry, your account has insufficient funds for this transaction.")
     });
   })
