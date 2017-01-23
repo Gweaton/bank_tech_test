@@ -12,6 +12,13 @@ describe("Account", function() {
     });
 
     it("should have a showBalance function", function() {
-      expect(account.showBalance()).toEqual(0)
+      expect(account.showBalance()).toEqual(0);
+    });
+  });
+
+  describe("deposit", function() {
+    it("should add money to the account's balance", function() {
+      account.deposit(100);
+      expect(account.showBalance()).toEqual(100);
     });
   });
