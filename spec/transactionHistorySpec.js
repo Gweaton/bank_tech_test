@@ -20,14 +20,14 @@ describe("TransactionHistory", function() {
 
   describe("addTransaction", function() {
 
-    it("should add a deposit to transactionHistory", function() {
+    it("should add a deposit to history", function() {
       transactionHistory.addTransaction("deposit", 100, 100)
       expect(transactionHistory.showHistory()).toEqual( [{ date: '23/01/2017',
                                                      credit: '100.00',
                                                      debit: '    ',
                                                      balance: '100.00'    }]);
     });
-    it("should add a withdrawal to transactionHistory", function() {
+    it("should add a withdrawal to history", function() {
       transactionHistory.addTransaction("withdrawal", 80, 100);
       expect(transactionHistory.showHistory()).toEqual(
         [{ date: '23/01/2017',
