@@ -22,3 +22,11 @@ describe("Account", function() {
       expect(account.showBalance()).toEqual(100);
     });
   });
+
+  describe("withdraw", function() {
+    it("should remove money from the account's balance", function() {
+      account.deposit(100);
+      account.withdraw(10);
+      expect(account.showBalance()).toEqual(90);
+    });
+  })
