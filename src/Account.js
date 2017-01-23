@@ -17,6 +17,7 @@ Account.prototype.withdraw = function(amount) {
     throw "Sorry, your account has insufficient funds for this transaction.";
   }
   this.balance -= amount;
+  this.addTransaction(0, amount);
 };
 
 Account.prototype.formatDate = function() {

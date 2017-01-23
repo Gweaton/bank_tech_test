@@ -48,11 +48,29 @@ describe("Account", function() {
   });
 
   describe("addTransaction", function() {
-    it("should add the current transaction to transactionHistory", function() {
+    beforeEach(function() {
       account.deposit(100);
-      expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
-                                                     credit: 100,
-                                                     debit: 0,
-                                                     balance: 100    }]);
     });
-  });
+
+      it("should add a deposit to transactionHistory", function() {
+        expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
+                                                       credit: 100,
+                                                       debit: 0,
+                                                       balance: 100    }]);
+      });
+      it("should add a withdrawal to transactionHistory", function() {
+        account.withdraw(100);
+        expect(account.transactionHistory).toEqual( [{ date: '23/01/2017',
+                                                       credit: 100,
+                                                       debit: 0,
+                                                       balance: 100    },
+                                                     { date: '23/01/2017',
+                                                       credit: 0,
+                                                       debit: 100,
+                                                       balance: 0    }
+
+                                                     ])
+
+      })
+
+    });
