@@ -4,7 +4,7 @@ var Account = function() {
 };
 
 Account.prototype.showBalance = function() {
-  return this.balance;
+  return this.formatMoney(this.balance);
 };
 
 Account.prototype.deposit = function(amount) {
@@ -37,7 +37,7 @@ Account.prototype.addTransaction = function(credit, debit) {
     date: this.formatDate(),
     credit: this.formatMoney(credit),
     debit: this.formatMoney(debit),
-    balance: this.formatMoney(this.balance)
+    balance: this.showBalance()
   }
   this.transactionHistory.push(this.currentTransaction);
 };
@@ -46,10 +46,11 @@ Account.prototype.formatMoney = function(amount) {
   return amount.toFixed(2);
 };
 
-// Account.prototype.processAccountStatement = function() {
-//   var statement = ""
-//   for (var i = 0; i < this.transactionHistory.length; i++ ) {
-//       statement += `${this.transactionHistory[i].date} || ${this.transactionHistory[i].credit} || ${this.transactionHistory[i].debit} || ${this.transactionHistory[i].balance} \n`
-//     }
-//     console.log(statement)
-// };
+Account.prototype.processAccountStatement = function() {
+  var statement = ""
+  for (var i = 0; i < this.transactionHistory.length; i++ ) {
+      statement += `${this.transactionHistory[i].date} || ${this.transactionHistory[i].credit} || ${this.transactionHistory[i].debit} || ${this.transactionHistory[i].balance} \n`
+    }
+    return(statement);
+    console.log(statement);
+};

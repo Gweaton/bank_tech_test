@@ -8,11 +8,11 @@ describe("Account", function() {
 
   describe("balance", function() {
     it("should start on 0 for a new account", function() {
-      expect(account.balance).toEqual(0.00);
+      expect(account.balance).toEqual(0);
     });
 
     it("should have a showBalance function", function() {
-      expect(account.showBalance()).toEqual(0.00);
+      expect(account.showBalance()).toEqual('0.00');
     });
   });
 
@@ -23,7 +23,7 @@ describe("Account", function() {
     });
 
       it("should add money to the account's balance", function() {
-        expect(account.showBalance()).toEqual(100.00);
+        expect(account.showBalance()).toEqual('100.00');
       });
     });
 
@@ -33,7 +33,7 @@ describe("Account", function() {
     })
     it("should remove money from the account's balance", function() {
       account.withdraw(10);
-      expect(account.showBalance()).toEqual(90.00);
+      expect(account.showBalance()).toEqual('90.00');
     });
 
     it("should not let you overdraw", function() {
@@ -81,14 +81,14 @@ describe("Account", function() {
     });
   });
 
-  // describe("processAccountStatement", function() {
-  //   it("should print out a nearly formatted transactionHistory", function() {
-  //     account.deposit(100);
-  //     account.withdraw(80);
-  //     expect(account.processAccountStatement()).toEqual(
-  //       `date       || credit || debit || balance\n
-  //        23/01/2017 || 100.00 || 0     || 100.00 \n
-  //        23/01/2017 || 0      || 80.00 || 20.00  \n`
-  //     );
-  //   });
-  // });
+  describe("processAccountStatement", function() {
+    xit("should print out a nearly formatted transactionHistory", function() {
+      account.deposit(100);
+      account.withdraw(80);
+      expect(account.processAccountStatement()).toEqual(
+        `date       || credit || debit || balance\n
+         23/01/2017 || 100.00 || 0.00  || 100.00 \n
+         23/01/2017 || 0.00   || 80.00 || 20.00  \n`
+      );
+    });
+  });
