@@ -17,11 +17,15 @@ describe("Account", function() {
   });
 
   describe("deposit", function() {
-    it("should add money to the account's balance", function() {
+
+    beforeEach(function() {
       account.deposit(100);
-      expect(account.showBalance()).toEqual(100);
     });
-  });
+
+      it("should add money to the account's balance", function() {
+        expect(account.showBalance()).toEqual(100);
+      });
+    });
 
   describe("withdraw", function() {
     beforeEach(function() {
@@ -35,4 +39,10 @@ describe("Account", function() {
     it("should not let you overdraw", function() {
       expect(function() {account.withdraw(110)}).toThrow("Sorry, your account has insufficient funds for this transaction.")
     });
-  })
+  });
+
+  describe("formatDate", function() {
+    it("should show today's date nicely formatted", function() {
+      expect(account.formatDate()).toEqual("23/01/2017")
+    });
+  });
