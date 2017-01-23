@@ -86,9 +86,7 @@ describe("Account", function() {
       account.deposit(100);
       account.withdraw(80);
       expect(account.processAccountStatement()).toEqual(
-        `date       || credit || debit || balance\n
-         23/01/2017 || 100.00 || 0.00  || 100.00 \n
-         23/01/2017 || 0.00   || 80.00 || 20.00  \n`
+        `date       || credit || debit || balance\n23/01/2017 || 100.00 || 0.00  || 100.00 \n23/01/2017 || 0.00   || 80.00 || 20.00  \n`
       );
     });
   });

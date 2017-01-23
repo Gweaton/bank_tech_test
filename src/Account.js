@@ -48,8 +48,9 @@ Account.prototype.formatMoney = function(amount) {
 
 Account.prototype.processAccountStatement = function() {
   var statement = ""
+  statement += "date       || credit || debit || balance\n "
   for (var i = 0; i < this.transactionHistory.length; i++ ) {
-      statement += `${this.transactionHistory[i].date} || ${this.transactionHistory[i].credit} || ${this.transactionHistory[i].debit} || ${this.transactionHistory[i].balance} \n`
+      statement += `${this.transactionHistory[i].date} || ${this.transactionHistory[i].credit}  || ${this.transactionHistory[i].debit}  || ${this.transactionHistory[i].balance} \n`
     }
     return(statement);
     console.log(statement);
