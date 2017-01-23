@@ -41,3 +41,15 @@ Account.prototype.addTransaction = function(credit, debit) {
   }
   this.transactionHistory.push(this.currentTransaction);
 };
+
+Account.prototype.formatMoney = function(amount) {
+  return amount.toFixed(2)
+};
+
+// Account.prototype.processAccountStatement = function() {
+//   var statement = ""
+//   for (var i = 0; i < this.transactionHistory.length; i++ ) {
+//       statement += `${this.transactionHistory[i].date} || ${this.transactionHistory[i].credit} || ${this.transactionHistory[i].debit} || ${this.transactionHistory[i].balance} \n`
+//     }
+//     console.log(statement)
+// };
