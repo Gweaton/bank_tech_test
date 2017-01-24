@@ -5,10 +5,6 @@ var Transaction = function(type, amount, balance) {
   this.balance = balance;
 }
 
-Transaction.prototype.withdraw = function(amount) {
-  this.debit += amount;
-};
-
 Transaction.prototype.getBalance = function(amount) {
   this.balance = amount;
 };
