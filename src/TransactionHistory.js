@@ -6,16 +6,8 @@ TransactionHistory.prototype.showHistory = function() {
   return this.history;
 };
 
-TransactionHistory.prototype.addTransaction = function(type, amount, balance) {
-    this.currentTransaction = {
-      date: this.formatDate(),
-      credit: null,
-      debit: null,
-      balance: this.formatMoney(balance)
-    }
-  this.currentTransaction.credit = type === "deposit" ? this.formatMoney(amount) : '    '
-  this.currentTransaction.debit = type === "withdrawal" ? this.formatMoney(amount) : '    '
-  this.history.push(this.currentTransaction);
+TransactionHistory.prototype.addTransaction = function(transaction) {
+  this.history.push(transaction);
 }
 
 TransactionHistory.prototype.formatDate = function() {

@@ -1,42 +1,38 @@
 describe("TransactionHistory", function() {
   var transactionHistory;
+  var transaction;
 });
 
   beforeEach(function() {
     transactionHistory = new TransactionHistory();
+    transaction = { date: "24/01/2017",
+                    credit: "100.00",
+                    debit: "",
+                    balance: "100.00"}
   });
 
-  describe("history", function() {
-    it("should start out empty", function() {
-      expect(transactionHistory.showHistory()).toEqual([]);
+    describe("history", function() {
+      it("should start out empty", function() {
+        expect(transactionHistory.showHistory()).toEqual([]);
+      });
     });
-  });
 
-  describe("formatDate", function() {
-    it("should show today's date nicely formatted", function() {
-      expect(transactionHistory.formatDate()).toEqual("24/01/2017")
+    describe("formatDate", function() {
+      it("should show today's date nicely formatted", function() {
+        expect(transactionHistory.formatDate()).toEqual("24/01/2017")
+      });
     });
-  });
 
-  describe("addTransaction", function() {
-
-    xit("should add a deposit to history", function() {
-      transactionHistory.addTransaction("deposit", 100, 100)
-      expect(transactionHistory.showHistory()).toEqual( [{ date: '24/01/2017',
-                                                     credit: '100.00',
-                                                     debit: '    ',
-                                                     balance: '100.00'    }]);
+    describe("addTransaction", function() {
+      it("should add a transaction to history", function() {
+        transactionHistory.addTransaction(transaction);
+        expect(transactionHistory.showHistory()).toEqual(
+          [{ date: "24/01/2017",
+             credit: "100.00",
+             debit: "",
+             balance: "100.00"}]);
+      });
     });
-    xit("should add a withdrawal to history", function() {
-      transactionHistory.addTransaction("withdrawal", 80, 100);
-      expect(transactionHistory.showHistory()).toEqual(
-        [{ date: '24/01/2017',
-           credit: '    ',
-           debit: '80.00',
-           balance: '100.00'    }
-         ]);
-    });
-  });
 
     describe("formatMoney", function() {
       it("should set money to two decimal places", function() {
