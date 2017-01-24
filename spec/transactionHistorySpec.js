@@ -41,8 +41,8 @@ describe("TransactionHistory", function() {
     });
 
     describe("formatTransaction", function() {
-      xit("should print out a formatted line from history", function() {
-        transactionHistory.addTransaction("deposit", 100, 100);
-        expect(transactionHistory.formatTransaction(transactionHistory.history[0])).toEqual("23/01/2017 || 100.00 ||      || 100.00\n")
+      it("should print out a formatted line from history", function() {
+        transactionHistory.addTransaction(transaction);
+        expect(transactionHistory.formatTransaction(transactionHistory.history[0])).toEqual("24/01/2017 || 100.00 ||  || 100.00\n")
       });
     });

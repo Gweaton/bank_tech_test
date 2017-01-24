@@ -27,5 +27,9 @@ TransactionHistory.prototype.formatMoney = function(amount) {
 };
 
 TransactionHistory.prototype.formatTransaction = function(transaction) {
-  return `${transaction.date} || ${transaction.credit} || ${transaction.debit} || ${transaction.balance}\n`
+  var statement = ""
+  for (var i = 0; i < this.history.length; i++) {
+    statement +=  `${transaction.date} || ${transaction.credit} || ${transaction.debit} || ${transaction.balance}\n`
+  };
+  return statement;
 };
