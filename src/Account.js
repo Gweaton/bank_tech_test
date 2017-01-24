@@ -8,8 +8,7 @@ Account.prototype.showBalance = function() {
 };
 
 Account.prototype.deposit = function(amount) {
-  var transaction = new Transaction();
-  transaction.deposit(amount, this.balance + amount);
+  var transaction = new Transaction("deposit", amount, this.balance + amount);
   this.balance += amount;
   this.transactionHistory.addTransaction("deposit", amount, this.balance);
 };

@@ -1,14 +1,9 @@
-var Transaction = function() {
+var Transaction = function(type, amount, balance) {
   this.date = new Date();
-  this.credit = 0;
-  this.debit = 0;
-  this.balance;
+  this.credit = (type = "deposit" ? amount : "");
+  this.debit = (type = "withdrawal" ? amount : "");
+  this.balance = balance;
 }
-
-Transaction.prototype.deposit = function(amount, balance) {
-  this.credit += amount;
-  this.getBalance(balance);
-};
 
 Transaction.prototype.withdraw = function(amount) {
   this.debit += amount;

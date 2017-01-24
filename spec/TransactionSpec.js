@@ -3,33 +3,23 @@ describe ("Transaction", function() {
   var transaction;
 });
 
-  beforeEach(function() {
-    transaction = new Transaction();
-  });
-
   describe("date", function() {
     it("should get today's date", function() {
+    transaction = new Transaction()
     expect(transaction.date instanceof Date).toBeTruthy();
     });
   });
 
-  describe("getBalance", function() {
-    it("should store the amount passed to it in 'balance' for each transaction", function() {
-      transaction.getBalance(10);
-      expect(transaction.balance).toEqual(10);
-    });
-  });
-
-  describe("deposit", function() {
-    it("should store the amount in credit", function() {
-      transaction.deposit(10, 10);
+  describe("credit", function() {
+    it("should store the amount when passed a 'type' of deposit", function() {
+      transaction = new Transaction("deposit", 10, 10);
       expect(transaction.credit).toEqual(10);
     });
   });
 
-  describe("withdraw", function() {
-    it("should add the amount in debit", function() {
-      transaction.withdraw(10, 0);
+  describe("debit", function() {
+    it("should store the amount when passed a 'type' of withdrawal", function() {
+      transaction = new Transaction("withdrawal", 10, 10);
       expect(transaction.debit).toEqual(10);
     });
   });
