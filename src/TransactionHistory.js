@@ -26,10 +26,15 @@ TransactionHistory.prototype.formatMoney = function(amount) {
   return amount.toFixed(2);
 };
 
+TransactionHistory.prototype.addHeaders = function() {
+  return "<table><tr><th>Date</th><th>Credit></th><th>Debit</th><th>Balance</th></tr>"
+}
+
 TransactionHistory.prototype.formatTransaction = function(transaction) {
-  var statement = ""
+  var statement = this.addHeaders();
   for (var i = 0; i < this.history.length; i++) {
-    statement +=  `${transaction.date} || ${transaction.credit} || ${transaction.debit} || ${transaction.balance}\n`
+    statement +=  `<tr><td>${transaction.date}</td><td>${transaction.credit}</td><td>${transaction.debit}</td><td>${transaction.balance}</td></tr>`
   };
+  statement += '</table>'
   return statement;
 };
